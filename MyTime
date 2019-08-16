@@ -1,0 +1,50 @@
+class MyTime {
+	int hh, mm, ss;
+	public void getTime(int h, int m, int s) {
+    ss = s;
+    mm = m;
+    hh = h;
+	}
+	public void showTime() {
+    if (hh>24) {
+      System.out.print("Time : "+(hh/24)+" day(s) "+(hh%24+mm/60)+"h:"+(mm%60+ss/60)+"m:"+(ss%60)+"s\n");
+    }
+    else{
+		    System.out.print("Time : "+hh+"h:"+mm+"m:"+ss+"s\n");
+    }
+	}
+  public static MyTime addTime(MyTime t1, MyTime t2){
+    MyTime temp = new MyTime();
+    temp.hh = t1.hh+t2.hh;
+    temp.mm = t1.mm+t2.mm;
+    temp.ss = t1.ss+t2.ss;
+    return temp;
+  }
+  public static MyTime subTime(MyTime t1, MyTime t2){
+    
+    MyTime temp = new MyTime();
+    temp.hh = t1.hh-t2.hh;
+    temp.mm = t1.mm-t2.mm;
+    temp.ss = t1.ss-t2.ss;
+    return temp;
+  }
+}
+
+class Main {
+	public static void main(String[] args) {
+		MyTime a = new MyTime();
+    MyTime b = new MyTime();
+    a.getTime(25, 15, 67);
+    System.out.print("\nA = \n");
+    a.showTime();
+    b.getTime(17, 54, 12);
+    System.out.print("\nB = \n");
+    b.showTime();
+    MyTime c = MyTime.addTime(a,b);
+    System.out.print("\nC = A+B\n");
+    c.showTime();
+    MyTime d = MyTime.subTime(a,b);
+    System.out.print("\nD = A-B\n");
+    d.showTime();
+	}
+}
